@@ -428,6 +428,4 @@ MIT License
 
 ---
 
-<p align="center">
-  <b>Built with ❤️ by the Edge AI Team</b>
-</p>
+
