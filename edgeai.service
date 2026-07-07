@@ -1,0 +1,22 @@
+[Unit]
+Description= Edge AI sureveillance video pipeline daemon
+After=local-fs.target network.target mnt-sandbox.mount
+Requires=mnt-sandbox.mount
+
+[Service]
+#Environment requirement variables can be injected here
+Type=simple
+
+#the path where our compiles C++ binary will exist inside the VM
+ExecStart=/mnt/sandbox/edge_ai_node
+
+#if our c++ code crashed due to a memory glitch or bad frame , restart it automatically
+Restart=always
+RestartSec=3
+
+#redirect all std::cput print lines directly into the core linux system log
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
